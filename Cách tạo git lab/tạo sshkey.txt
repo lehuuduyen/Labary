@@ -1,0 +1,13 @@
+https://docs.gitlab.com/ce/ssh/README.html
+
+tao thu muc tren git 
+git init 
+d?t tên mi?n
+git remote origin https://github.com/lehuuduyen/Labary.git
+
+git add -A hoac git add .
+git commit -m "comment"
+
+l?n dau push
+git push --set-upstream origin master --force
+

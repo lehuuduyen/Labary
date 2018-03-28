@@ -1,0 +1,56 @@
+View:
+<div class="user-image">
+    <span id="img"></span>
+    <input  name="image" id="image" class="hidden" type="file">
+
+    <p class="h3" style="text-align: center">
+        <span id="name"></span>
+    </p>
+</div>
+
+
+
+xử ly:
+
+    $('#img').on('click', function() {
+            $('#image').click();
+        });
+        $('#image').on('change',function(e){
+            var files = e.target.files;
+            var formdata= new FormData();
+            formdata.append('file',$(this)[0].files[0]);
+            formdata.append('id',id);
+            formdata.append('flag','customer');
+            if(files[0].type=="image/jpeg"||files[0].type=="image/png") {
+
+
+                $.ajax({
+                    url: 'http://project1.caikho.com/customers/store_file',
+                    type: 'POST',
+                    data: formdata,
+                    contentType: false,
+                    processData: false,
+                    success: function(data){
+                        console.log(data)
+                        location.reload();
+                    },
+                    error: function (xhr, error, thrown) {
+                        if(xhr.status==401){
+                            location.href=xhr.responseJSON.url;
+                        }
+
+                    }
+                });
+            }
+
+
+        });
+        
+        
+        
+          if(data.avatar==null||data.avatar==''){
+                    img+='<img style="width: 160px; margin: auto" alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image" class="img-circle img-responsive">  ';
+                }
+                else{
+                    img+='<img style="width: 160px; margin: auto" alt="User Pic" src="http://project1.caikho.com/storage/app/public/'+data.avatar+'" id="profile-image" class="img-circle img-responsive">';
+                }

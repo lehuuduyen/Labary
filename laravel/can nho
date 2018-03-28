@@ -1,0 +1,9 @@
+ return redirect()
+            ->route('customer')
+            ->with([
+                'flash_level'   => 'success',
+                'flash_message' => 'Bạn thêm thành công!!!'
+            ]);
+            
+            
+                    Route::get('success',['as'=>'success','uses'=>'ReplyController@success']);

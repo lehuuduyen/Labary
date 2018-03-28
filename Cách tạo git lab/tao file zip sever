@@ -1,0 +1,2 @@
+zip -r myfiles.zip ./
+unzip archive.zip
