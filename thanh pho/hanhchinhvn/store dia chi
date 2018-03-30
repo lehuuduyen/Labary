@@ -1,0 +1,45 @@
+public  function add_address(){
+        $content=file_get_contents('public/tree.json');
+        $content=json_decode($content);
+
+
+        foreach ($content as $value){
+            $province= new province();
+            $province->id=$value->code;
+            $province->name=$value->name;
+            $province->type=$value->type;
+            $province->name_with_type=$value->name_with_type;
+            $province->slug=$value->slug;
+//            $province->save();
+
+            foreach ($value->quan_huyen as $value1){
+
+                $district= new district();
+                $district->id=$value1->code;
+                $district->name=$value1->name;
+                $district->type=$value1->type;
+                $district->slug=$value1->slug;
+                $district->path=$value1->path;
+                $district->path_with_type=$value1->path_with_type;
+                $district->province_id=$value1->parent_code;
+//                $district->save();
+
+
+                foreach ($value1->xa_phuong as $value2){
+                    $villages= new village();
+                    $villages->id=$value2->code;
+                    $villages->name=$value2->name;
+                    $villages->type=$value2->type;
+                    $villages->path=$value2->path;
+                    $villages->name_with_type=$value2->name_with_type;
+                    $villages->slug=$value2->slug;
+                    $villages->path_with_type=$value2->path_with_type;
+                    $villages->district_id=$value2->parent_code;
+                    $villages->save();
+                }
+
+
+            }
+
+        }
+    }
