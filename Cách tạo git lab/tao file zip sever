@@ -1,2 +1,7 @@
 zip -r myfiles.zip ./
 unzip archive.zip
+
+
+
+xoa source 
+rm -rf /home/danhgia.dev-altamedia.com/public_html/
