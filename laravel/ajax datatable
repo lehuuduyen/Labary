@@ -1,0 +1,48 @@
+
+//        fields=[];
+//        var $tableData= $('#tableData > thead > tr > th').each(function () {
+//
+//            var value = $(this).attr('field');
+//
+//            fields.push({data: value, name: value});
+//
+//        }).promise().done(function () {
+//
+//            datatables = $('#tableData').DataTable({
+//
+//                processing: true,
+//
+//                serverSide: true,
+//
+//                "aLengthMenu": [[25, 50, 75, -1], [25, 50, 75, "All"]],
+//
+//                "iDisplayLength": 25,
+//
+//                ajax: {
+//
+//                    url:'http://project1.caikho.com/customer/anyData/',
+//
+////                    data: function (d) {
+////
+////                        d.data = request;
+////                    }
+//
+//                },
+//
+//                order:
+//
+//                    [[0, 'desc']],
+//
+//                dom: 'Bfrtip',
+//
+//                buttons: [
+//
+//                    'copy', 'csv', 'excel', 'pdf', 'print'
+//
+//                ],
+//
+//                columns: fields
+//
+//            });
+//
+//        });
