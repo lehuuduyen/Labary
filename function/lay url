@@ -1,0 +1,1 @@
+        var id = location.pathname.split('/')[4];
