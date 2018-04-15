@@ -4,3 +4,11 @@ SELECT id, ( 6371 * acos( cos( radians(10.756863) ) * cos( radians( latitude ) )
 theo dặm 6371=3959 
 
 https://developers.google.com/maps/solutions/store-locator/clothing-store-locator?csw=1
+
+
+  $data= DB::table('companys')
+            ->select(["*",DB::raw(" 6371 * ACOS( COS( RADIANS($lat) ) * COS( RADIANS( `latitude` ) ) * COS( RADIANS(`longitude` ) - RADIANS($long) ) + SIN( RADIANS($lat) ) * SIN( RADIANS( `latitude` ) ) )  AS distance")])
+            ->havingRaw("distance<=10")
+            ->orderBy('distance')
+            ->limit(20)
+            ->get();
