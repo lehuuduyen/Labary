@@ -46,3 +46,89 @@
 //            });
 //
 //        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ var table_employment = $('#tableEmployee');
+    table_employment.DataTable({
+        "oLanguage": {
+            "sSearch": "Tìm kiếm nhanh:",
+            "sLengthMenu": "Số hàng hiển thị _MENU_ hàng.",
+            "sInfo": "Hiển thị _START_ đến _END_ trong tổng _TOTAL_ dòng"
+        },
+        ajax: {
+            url:API_EMPLOYEE_SHOW,
+            error: function (xhr, error, thrown) {
+                if(xhr.status==401){
+                    location.href=xhr.responseJSON.url;
+                }
+            }
+        },
+        order: [[ 0, "desc" ]],
+        columns: [
+            {
+                data: 'id',
+                name: 'id',
+                className: "text-center",
+                width: "5%"
+            },
+            {
+                data: 'full_name',
+                name: 'full_name',
+                className: "text-center",
+                width: "25%"
+            },
+            {
+                data: 'email',
+                name: 'email',
+                className: "text-center",
+                width: "25%"
+            },
+            {
+                data: 'phone',
+                name: 'phone',
+                className: "text-center",
+                width: "10%"
+            },
+            {
+                data: 'created_at',
+                name: 'created_at',
+                className: "text-center",
+                width: "10%"
+            },
+            {
+                data: 'status',
+                name: 'status',
+                render: function ( data, type, full, meta ) {
+                    return data == '1' ? 'Mở' : 'Đóng';
+                },
+                className: "text-center",
+                width: "10%"
+            },
+            {
+                data: null,
+                orderable: false,
+                searchable: false,
+                render: function ( data, type, full, meta ) {
+                    return `<a class="btn btn-xs btn-success" href="/employee/show/`
+                        + full.id + `"><i class="fa fa-eye"></i></a>
+                            <a data-name="` + full.full_name + `" data-id="` + full.id + `" class="btn btn-xs btn-danger btn-Delete">
+                            <i class="fa fa-times"></i></a>`;
+                },
+                className: "text-center",
+                width: "10%"
+            }
+        ]
+    });
+
