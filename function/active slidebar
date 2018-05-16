@@ -1,0 +1,21 @@
+function AreaTabSidebar() {
+        var url=window.location.href;
+        $("ul.sidebar-menu li:first-child").addClass('active');
+        $("ul.sidebar-menu li").each(function(){
+            var urls=$(this).find('a').attr('href');
+            if(urls==url)
+            {
+                $("ul.sidebar-menu li:first-child").removeClass('active');
+                $(this).addClass('active');
+            }
+        });
+        $("ul.sidebar-menu li ul li").each(function(){
+            var urls=$(this).find('a').attr('href');
+            if(urls==url)
+            {
+                $("ul.sidebar-menu li").removeClass('active');
+                $(this).parent('ul').parent('li').addClass('active');
+                $(this).addClass('active');
+            }
+        });
+}
