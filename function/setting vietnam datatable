@@ -1,0 +1,27 @@
+ // setting Vietnamese for DataTable
+    $.extend( true, $.fn.dataTable.defaults, {
+        "language": {
+            "decimal":        "",
+            "emptyTable":     "Không tìm thấy dữ liệu",
+            "info":           "Hiển thị _START_ tới _END_ của _TOTAL_ mục",
+            "infoEmpty":      "Hiển thị 0 tới 0 của 0 mục",
+            "infoFiltered":   "(filtered from _MAX_ total entries)",
+            "infoPostFix":    "",
+            "thousands":      ",",
+            "lengthMenu":     "Hiển thị _MENU_ mục",
+            "loadingRecords": "Đang xử lý...",
+            "processing":     "Đang xử lý...",
+            "search":         "Tìm kiếm:",
+            "zeroRecords":    "Không tìm thấy dữ liệu",
+            "paginate": {
+                "first":      "Trang đầu",
+                "last":       "Trang cuối",
+                "next":       "Trang trước",
+                "previous":   "Trang sau"
+            },
+            "aria": {
+                "sortAscending":  ": activate to sort column ascending",
+                "sortDescending": ": activate to sort column descending"
+            }
+        }
+    });
