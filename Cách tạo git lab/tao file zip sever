@@ -1,5 +1,5 @@
 zip -r myfiles.zip ./
-unzip archive.zip
+unzip myfiles.zip
 
 
 
