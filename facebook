@@ -1,3 +1,5 @@
+ssl 
+extension=php_openssl.dll
 shareFB
 https://www.facebook.com/dialog/share?app_id=1070862176408068&display=popup&href=https://yamaha.altamedia.vn/show/slug/szM7nyC9PD&redirect_uri=https://yamaha.altamedia.vn/show/slug/szM7nyC9PD?check=true
 
