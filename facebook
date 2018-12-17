@@ -1,0 +1,70 @@
+shareFB
+https://www.facebook.com/dialog/share?app_id=1070862176408068&display=popup&href=https://yamaha.altamedia.vn/show/slug/szM7nyC9PD&redirect_uri=https://yamaha.altamedia.vn/show/slug/szM7nyC9PD?check=true
+
+dang nhap
+ window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '143093336553757',
+                cookie     : true,
+                xfbml      : true,
+                version    : 'v2.10'
+            });
+            FB.getLoginStatus(function(response) {
+                console.log(response)
+                if (response.status === 'connected') {
+//                    getFbUserData();
+                } else if (response.status === 'not_authorized') {
+                    console.log('Logged in to Facebook, but not has authenticated your app');
+                } else {
+                    console.log('Please login Facebook');
+                }
+            });
+
+        };
+
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+
+        function fbLogin() {
+            FB.login(function (response) {
+                if (response.authResponse) {
+                    getFbUserData();
+                } else {
+                    console.log('User cancelled login or did not fully authorize.');
+                }
+            }, {scope: 'public_profile, email'});
+        }
+
+        function getFbUserData(){
+            FB.api('/me', {fields: 'id,name,email'}, function (response) {
+                console.log(response)
+                
+                    
+                    
+                
+
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'https://petite-api.dev-altamedia.com/api/customer/store',
+                    data: {
+                        'profile_id': response.id,
+                        'name': response.name,
+                        'email': response.email
+                    },
+                    success: function (res) {
+                        localStorage.setItem('profile_id',response.id);
+                        location.href="https://petite.dev-altamedia.com/list-story";
+                    },
+                    error: function (res) {
+                        console.log(res);
+                    }
+                });
+            });
+        }
